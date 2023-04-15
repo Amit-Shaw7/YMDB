@@ -19,10 +19,10 @@ app.listen(PORT, async () => {
 });
 
 // Routes
+app.use('/api/auths', AuthRouter);
+app.use('/api/movies', MovieRouter);
 app.use("/api/", (req, res) => {
     res?.send("Welcome to MovieDB API");
 })
-app.use('/api/auths', AuthRouter);
-app.use('/api/movies', MovieRouter);
 
 
