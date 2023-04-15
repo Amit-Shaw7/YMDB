@@ -7,7 +7,7 @@ import cors from 'cors';
 
 const app = express();
 dotenv.config();
-app.use(cors({origin:"https://yourmoviedb.vercel.app" , credentials:true}))
+app.use(cors({ origin: "https://yourmoviedb.vercel.app", credentials: true }))
 
 const MongoURI = process.env.MONGO_URI;
 const PORT = process.env.PORT;
@@ -19,7 +19,10 @@ app.listen(PORT, async () => {
 });
 
 // Routes
-app.use('/api/auths' , AuthRouter);
-app.use('/api/movies' , MovieRouter);
+app.use("/api/", (req, res) => {
+    res?.send("Welcome to MovieDB API");
+})
+app.use('/api/auths', AuthRouter);
+app.use('/api/movies', MovieRouter);
 
 
