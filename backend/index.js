@@ -7,7 +7,7 @@ import cors from 'cors';
 
 const app = express();
 dotenv.config();
-app.use(cors({origin:"http://localhost:3000" , credentials:true}))
+app.use(cors({origin:"https://yourmoviedb.vercel.app" , credentials:true}))
 
 const MongoURI = process.env.MONGO_URI;
 const PORT = process.env.PORT;
