@@ -7,7 +7,7 @@ import { fetchFavMovies } from '../store/actions/MoviesAction';
 
 
 const Favourite = () => {
-  const { user , favourites } = useSelector(state => state.user);
+  const { isAuthenticated , favourites } = useSelector(state => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchFavMovies());
@@ -44,7 +44,7 @@ const Favourite = () => {
         justifyContent: "center",
       }}>
       {
-        user ? 
+        isAuthenticated === true ? 
         <>
           {
             favourites?.length === 0 ? <h1 style={{ color: "white" }}>No Movies in Favorite</h1> :
