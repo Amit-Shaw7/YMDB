@@ -43,7 +43,7 @@ const Favourite = () => {
 
             <Stack sx={{
               alignItems: "center",
-              width: {md:"70%" , sm:"90%"},
+              width: {md:"70%" , sm:"90%", xs:"90%"},
               padding: "10px 20px",
               borderRadius: "2rem",
               marginBottom: "1.5rem",
