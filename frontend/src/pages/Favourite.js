@@ -55,17 +55,17 @@ const Favourite = () => {
                   <>
                     {
                       favourites?.length === 0 ? <h1 style={{ color: "white" }}>No Movies in Favorite</h1> :
-                        <Stack sx={{ width: {md : "90%" , sm:"100%"}, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "column", height: "auto" }}>
+                        <Stack sx={{ width: { md: "90%", sm: "100%" }, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "column", height: "auto" }}>
                           {
                             favourites?.map((movie, idx) => (
                               <Stack key={idx} sx={{ color: "white", alignItems: "center", margin: "10px 0px 50px 0px", width: "100%", display: "flex", justifyContent: "space-between", flexDirection: "row", backgroundColor: "#000000", padding: "15px", borderRadius: "10px", height: "100%" }}>
-                                <Stack sx={{p:1 , alignItems:"center"}}>
+                                <Stack sx={{ p: 1, alignItems: "center" }}>
                                   <Avatar sx={{ height: { md: "150px", sm: "60px" }, width: { md: "150px", sm: "60px" }, objectFit: "contain" }} src={`${img_300}/${movie?.imgSm?.split('"')[0]}`} alt="" />
                                 </Stack>
                                 <Typography textAlign="center" sx={{ width: "15%" }}>{movie.title.slice(0, 12) + "..."}</Typography>
-                                <Typography textAlign="center" sx={{ width: "15%" }}>{movie.rating}</Typography>
-                                <Link to={`/${movie.type}/${movie.movieId}`} sx={{ width: "15%", display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row", textDecoration: "none" }}>
-                                  <Visibility sx={{p:1}}/>
+                                <Typography textAlign="center">{movie.rating}</Typography>
+                                <Link to={`/${movie.type}/${movie.movieId}`} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row", textDecoration: "none" }}>
+                                  <Visibility color='primary' sx={{ p: 1 }} />
                                 </Link>
                               </Stack>
                             ))
