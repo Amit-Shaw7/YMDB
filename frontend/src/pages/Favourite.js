@@ -43,7 +43,7 @@ const Favourite = () => {
 
             <Stack sx={{
               alignItems: "center",
-              width: {md:"70%" , sm:"90%", xs:"90%"},
+              width: {md:"70%" , xs:"90%"},
               padding: "10px 20px",
               borderRadius: "2rem",
               marginBottom: "1.5rem",
@@ -55,12 +55,12 @@ const Favourite = () => {
                   <>
                     {
                       favourites?.length === 0 ? <h1 style={{ color: "white" }}>No Movies in Favorite</h1> :
-                        <Stack sx={{ width: { md: "90%", sm: "100%" }, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "column", height: "auto" , gap:2 }}>
+                        <Stack sx={{ width: "100%" , display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "column", height: "auto" , gap:2 }}>
                           {
                             favourites?.map((movie, idx) => (
                               <Stack key={idx} sx={{ color: "white", alignItems: "center", width: "100%", display: "flex", justifyContent: "space-between", flexDirection: "row", backgroundColor: "#000000", padding: "15px", borderRadius: "10px", height: "100%" }}>
                                 <Stack sx={{ alignItems: "center" }}>
-                                  <Avatar sx={{ height: { md: "150px", sm: "60px" }, width: { md: "150px", sm: "60px" }, objectFit: "contain" }} src={`${img_300}/${movie?.imgSm?.split('"')[0]}`} alt="" />
+                                  <Avatar sx={{ height: { md: "100px", sm: "60px" }, width: { md: "100px", sm: "60px" }, objectFit: "contain" }} src={`${img_300}/${movie?.imgSm?.split('"')[0]}`} alt="" />
                                 </Stack>
                                 <Typography textAlign="center" sx={{ width: "15%" }}>{movie.title.slice(0, 12) + "..."}</Typography>
                                 <Typography textAlign="center">{movie.rating}</Typography>
