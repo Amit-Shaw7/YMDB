@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import { UserModel } from '../models/UserModel.js';
 import jwt from "jsonwebtoken";
+import { client } from '../posthog.js';
 
 export const register = async (req, res, next) => {
     const { email, password, name, phone } = req.body;
@@ -38,6 +39,10 @@ export const login = async (req, res, next) => {
 
         const { password, ...others } = exists._doc;
         const token = jwt.sign({ id: others._id }, process.env.JWT_SECRET);
+        client.capture({
+            distinctId: 'test-id',
+            event: 'test-event'
+        })
         return res.status(200).json({
             msg: "Logged in Succesfully",
             user: others,
