@@ -1,7 +1,11 @@
 import bcrypt from 'bcryptjs';
 import { UserModel } from '../models/UserModel.js';
 import jwt from "jsonwebtoken";
-import { posthog } from 'posthog-js';
+import { PostHog } from 'posthog-node';
+const client = new PostHog(
+    'phc_U67X0d7LYEVxr2NVMlByF5cvdc4sjGkitEskE1WKB1b',
+    { host: 'https://app.posthog.com' }
+);
 
 export const register = async (req, res, next) => {
     const { email, password, name, phone } = req.body;
@@ -15,7 +19,10 @@ export const register = async (req, res, next) => {
         const hash = await bcrypt.hash(req.body.password, salt);
         const createdUser = await UserModel.create({ email, name, phone, password: hash });
         if (createdUser) {
-            const { password, ...others } = createdUser._doc;
+            client.capture({
+                distinctId: others._id,
+                event: 'test-event'
+            })
             return res.status(200).json({
                 msg: "Sign up Sucesfull",
                 user: others,

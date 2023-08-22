@@ -5,6 +5,7 @@ import AuthRouter from './routers/AuthRouter.js';
 import MovieRouter from './routers/MovieRouter.js';
 import cors from 'cors';
 
+
 const app = express();
 dotenv.config();
 app.use(cors({ origin: "https://yourmoviedb.vercel.app", credentials: true }))
