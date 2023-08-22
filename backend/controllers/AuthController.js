@@ -39,10 +39,11 @@ export const login = async (req, res, next) => {
 
         const { password, ...others } = exists._doc;
         const token = jwt.sign({ id: others._id }, process.env.JWT_SECRET);
-        client.capture({
-            distinctId: 'test-id',
-            event: 'test-event'
-        })
+        await client.capture({
+            distinctId: others._id,
+            event: 'loggedIn'
+        });
+        console.log("Captured");
         return res.status(200).json({
             msg: "Logged in Succesfully",
             user: others,
