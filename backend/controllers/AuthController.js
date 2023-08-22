@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import { UserModel } from '../models/UserModel.js';
 import jwt from "jsonwebtoken";
 import { client } from '../posthog.js';
+import { posthog } from 'posthog-js';
 
 export const register = async (req, res, next) => {
     const { email, password, name, phone } = req.body;
@@ -39,10 +40,7 @@ export const login = async (req, res, next) => {
 
         const { password, ...others } = exists._doc;
         const token = jwt.sign({ id: others._id }, process.env.JWT_SECRET);
-        await client.capture({
-            distinctId: others._id,
-            event: 'loggedIn'
-        });
+        posthog.capture('loggd in', { property: others._id });
         console.log("Captured");
         return res.status(200).json({
             msg: "Logged in Succesfully",

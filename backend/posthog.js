@@ -1,6 +1,3 @@
-import { PostHog } from 'posthog-node'
+import { posthog } from "posthog-js"
 
-export const client = new PostHog(
-    'phc_U67X0d7LYEVxr2NVMlByF5cvdc4sjGkitEskE1WKB1b',
-    { host: 'https://app.posthog.com' }
-)
+posthog.init('phc_U67X0d7LYEVxr2NVMlByF5cvdc4sjGkitEskE1WKB1b', { api_host: 'https://app.posthog.com' })
