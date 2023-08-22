@@ -1,7 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { UserModel } from '../models/UserModel.js';
 import jwt from "jsonwebtoken";
-import { client } from '../posthog.js';
 import { posthog } from 'posthog-js';
 
 export const register = async (req, res, next) => {
